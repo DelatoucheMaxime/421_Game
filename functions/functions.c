@@ -5,7 +5,7 @@
 
 int displayDices(int dices[3])
 {
-    printf("\t1st value: %d\t2nd value: %d\t3rd value: %d\n", dices[0], dices[1], dices[2]);
+    printf("\t1st value: %d\t2nd value: %d\t3rd value: %d", dices[0], dices[1], dices[2]);
     return EXIT_SUCCESS;
 }
 
@@ -24,4 +24,15 @@ int isWinning(int dices[3])
     }
 
     return bool_isWinning;
+}
+
+
+void fillDices(int* dices)
+{
+    struct timespec ts;
+    clock_gettime(CLOCK_MONOTONIC, &ts);
+    
+
+    srand((time_t)ts.tv_nsec);
+    for(int i=0; i<3; i++)dices[i] = rand()%6+1;
 }
